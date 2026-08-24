@@ -42,7 +42,7 @@ const PROFILE = {
     availableMessage: 'up for interesting projects',
     sleepTitle: 'sid@workstation is sleeping',
     sleepSubtitle: 'click to restore session',
-    aboutEducationTag: 'IIT Bombay MTech'
+    aboutEducationTag: 'IIT Bombay'
   },
 
   files: [

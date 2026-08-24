@@ -188,7 +188,8 @@ const pages = {
       <div class="hero-layout">
         <div class="hero-copy-column">
           <div class="hero-kicker"> &nbsp;</div>
-          <h2 class="section-title">Hello, there! <span>${escapeHtml(PROFILE.identity.name)}</span> here :)</h2>
+          <h2 class="section-title">Hello, there!</h2>
+          <h2 class="section-title"><span>${escapeHtml(PROFILE.identity.name)}</span> here :)</h2>
           <p class="hero-copy">${escapeHtml(PROFILE.identity.description)}</p>
           ${renderTags([
             PROFILE.identity.location,
