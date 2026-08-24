@@ -283,7 +283,7 @@ const pages = {
     <div class="output">
       <p class="hero-kicker">// DIRECTORY LISTING</p>
       <div class="file-grid">
-        ${PROFILE.files.map(({ file }) => `<button class="file-entry" data-run="${file}"># ${escapeHtml(file)}</button>`).join('')}
+        ${PROFILE.files.map(({ file }) => `<button class="file-entry" data-run="${file}">${escapeHtml(file)}</button>`).join('')}
       </div>
     </div>
   `,
