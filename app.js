@@ -64,7 +64,8 @@ function applyProfileChrome() {
 
   const defaultPage = PROFILE.files[0]?.page || 'home';
   const brand = document.querySelector('.brand');
-  brand.href = `#${defaultPage}`;
+  brand.href = 'javascript:void(0)';
+  brand.addEventListener('click', (e) => { e.preventDefault(); render(defaultPage); });
   brand.innerHTML =
     `<span class="brand-mark">${escapeHtml(PROFILE.ui.brandMark)}</span> ${escapeHtml(PROFILE.identity.workstation)}`;
 
@@ -445,7 +446,7 @@ function resolveCommand(command) {
   };
 }
 
-function render(command, updateHash = true) {
+function render(command) {
   cancelAnimationFrame(typingFrame);
 
   const { cleaned, requestedFile, key } = resolveCommand(command);
@@ -482,17 +483,6 @@ function render(command, updateHash = true) {
   sidebar.classList.remove('open');
   terminal.scrollTop = 0;
   typeOutput();
-
-  if (updateHash && pages[key]) {
-    const targetHash = `#${key}`;
-    if (window.location.hash !== targetHash) {
-      if (history.pushState) {
-        history.pushState(null, '', targetHash);
-      } else {
-        window.location.hash = targetHash;
-      }
-    }
-  }
 }
 
 document.querySelector('#commandForm').addEventListener('submit', event => {
@@ -581,11 +571,11 @@ window.addEventListener('hashchange', () => {
   if (hashCmd) {
     const { key } = resolveCommand(hashCmd);
     if (pages[key]) {
-      render(hashCmd, false);
+      render(hashCmd);
       return;
     }
   }
-  render(PROFILE.files[0]?.page || 'home', false);
+  render(PROFILE.files[0]?.page || 'home');
 });
 
 applyProfileChrome();
@@ -596,12 +586,12 @@ const initialHash = getHashCommand();
 if (initialHash) {
   const { key } = resolveCommand(initialHash);
   if (pages[key]) {
-    render(initialHash, window.location.hash !== `#${key}`);
+    render(initialHash);
   } else {
-    render(defaultPage, true);
+    render(defaultPage);
   }
 } else {
-  render(defaultPage, true);
+  render(defaultPage);
 }
 
 if (window.matchMedia('(min-width: 721px)').matches) {
