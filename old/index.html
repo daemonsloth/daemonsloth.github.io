@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114306992-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-114306992-1');
+    </script>
+    <meta
+      name="Description"
+      content="My personal website, containing list of some of my projects and contact links for my LinkedIn, GitHub, Twitter, Instagram." />
+
+    <title>Sid</title>
+    <link href="logo.png?v=2.1" rel="shortcut icon" type="image/x-icon" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#3D3D3D" />
+
+    <meta property="og:title" content="daemonsloth" />
+    <meta
+      property="og:description"
+      content="My personal website, containing list of some of my projects and contact links for my LinkedIn, GitHub, Twitter, Instagram." />
+    <meta property="og:url" content="https://daemonsloth.github.io/" />
+    <meta
+      property="og:image"
+      content="https://daemonsloth.github.io/files/ogimg.png" />
+
+    <!-- Bootstrap & jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- custom css and scripts-->
+    <script src="title.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="animate.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="loader.css" />
+    <script src="loader.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="customStyle.css?v=1.3" />
+    <link rel="stylesheet" type="text/css" href="title.css" />
+    <script src="customScripts.js?v=1.2" type="text/javascript"></script>
+    <style type="text/css">
+      @font-face {
+        font-family: GidoleRegular;
+        src: url(fonts/Gidole-Regular.ttf);
+      }
+
+      html {
+        background-color: #3d3d3d;
+      }
+
+      .container-fluid * {
+        font-family: GidoleRegular;
+      }
+    </style>
+  </head>
+  <body onload="myFunction()" style="margin: 0">
+    <div class="loaderContainer">
+      <div id="loader"></div>
+    </div>
+    <div
+      class="container-fluid animate-bottom"
+      id="myDiv"
+      style="display: none">
+      <div id="myNav" class="overlay">
+        <!-- Button to close the overlay navigation -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+
+        <!-- Overlay content -->
+        <div class="overlay-content">
+          <a
+            href="#"
+            style="font-weight: 900; text-shadow: 2px 2px 10px black"
+            id="test"
+            onclick="closeNav()"
+            >Home</a
+          >
+          <a
+            target="_blank"
+            href="https://daemonsloth.github.io/files/resume.pdf?v=2.1"
+            >Résumé</a
+          >
+          <a href="contact.html">Contact</a>
+          <a href="projects.html">Projects</a>
+          <!-- <a href="visBlog/index.html">theVisBlog</a> -->
+        </div>
+      </div>
+      <div class="jumbotron2">
+        <div class="hamburger animated bounceInRight" onclick="openNav()">
+          &#9776;
+        </div>
+        <!-- <a target="_blank" href="https://www.cse.iitb.ac.in/~savvysiddharth/"> -->
+        <img
+          data-toggle="tooltip"
+          data-placement="right"
+          title="Bored!"
+          src="prof.jpeg"
+          class="img-circle dp animated bounceInDown" />
+        <!-- </a> -->
+        <br />
+        <div class="type-js headline">
+          <h1 class="text-js">Hey there! Sid here :)</h1>
+        </div>
+        <br />
+        <p class="animated bounceInRight hero-text">
+          <span>Trying to leave things a little better than I found them.</span
+          >
+        </p>
+        <a href="projects.html" class="hero-btn">See Projects ></a>
+      </div>
+    </div>
+    <footer class="footer" id="myDiv2">
+        <div class="container_null" style="padding-top: 5px; text-align: center;">
+        <a target="_blank" data-toggle="tooltip" data-placement="top" href="https://www.facebook.com/thesavvysloth" class="fa fa-facebook animated bounceInLeft" title="facebook @thesavvysloth"></a>
+        <a target="_blank" data-toggle="tooltip" data-placement="top" href="https://twitter.com/savvy_sloth_" class="fa fa-twitter animated bounceInLeft" title="twitter @savvy_sloth_"></a>
+        <a target="_blank" data-toggle="tooltip" data-placement="top" href="https://github.com/daemonsloth" class="fa fa-github animated bounceInUp" title="GitHub @daemonsloth"></a>
+        <a target="_blank" data-toggle="tooltip" data-placement="top" href="https://www.linkedin.com/in/sidmaurya/" class="fa fa-linkedin-square animated bounceInRight" title="LinkedIn @sidmaurya"></a>
+        <a target="_blank" data-toggle="tooltip" data-placement="top" href="https://www.instagram.com/savvy_sloth_" class="fa fa-instagram animated bounceInRight" title="Instagram @savvy_sloth_"></a>
+      </div>
+    </footer>
+  </body>
+</html>
