@@ -7,6 +7,7 @@
 
 const terminal = document.querySelector('#terminal');
 const input = document.querySelector('#commandInput');
+const commandCursor = document.querySelector('.command-cursor');
 const sidebar = document.querySelector('.sidebar');
 const shell = document.querySelector('.shell');
 const closeControl = document.querySelector('.window-control.close');
@@ -37,6 +38,30 @@ const escapeHtml = value =>
     "'": '&#39;',
     '"': '&quot;'
   }[character]));
+
+
+function syncCommandCursor() {
+  if (!commandCursor) return;
+
+  const caretIndex = input.selectionStart ?? input.value.length;
+  const valueBeforeCaret = input.value.slice(0, caretIndex);
+  const measurement = document.createElement('span');
+  const inputStyle = window.getComputedStyle(input);
+
+  measurement.textContent = valueBeforeCaret || '';
+  measurement.style.position = 'absolute';
+  measurement.style.visibility = 'hidden';
+  measurement.style.whiteSpace = 'pre';
+  measurement.style.font = inputStyle.font;
+  measurement.style.letterSpacing = inputStyle.letterSpacing;
+  measurement.style.textTransform = inputStyle.textTransform;
+
+  document.body.appendChild(measurement);
+  const offset = Math.min(measurement.getBoundingClientRect().width, input.clientWidth - commandCursor.offsetWidth);
+  document.body.removeChild(measurement);
+
+  commandCursor.style.setProperty('--cursor-offset', `${Math.max(offset, 0)}px`);
+}
 
 const completionCandidates = [
   ...PROFILE.files.map(({ file }) => `cat ${file}`),
@@ -499,6 +524,7 @@ document.querySelector('#commandForm').addEventListener('submit', event => {
   event.preventDefault();
   render(input.value);
   input.value = '';
+  syncCommandCursor();
 
   if (window.matchMedia('(max-width: 720px)').matches) {
     input.blur();
@@ -516,6 +542,7 @@ input.addEventListener('keydown', event => {
   if (matches.length === 1) {
     input.value = matches[0];
     input.setSelectionRange(input.value.length, input.value.length);
+    syncCommandCursor();
     return;
   }
 
@@ -526,9 +553,19 @@ input.addEventListener('keydown', event => {
       return prefix.slice(0, index);
     });
 
-    if (shared.length > typed.length) input.value = shared;
+    if (shared.length > typed.length) {
+      input.value = shared;
+      syncCommandCursor();
+    }
   }
 });
+
+input.addEventListener('input', syncCommandCursor);
+input.addEventListener('keyup', syncCommandCursor);
+input.addEventListener('click', syncCommandCursor);
+input.addEventListener('focus', syncCommandCursor);
+window.addEventListener('resize', syncCommandCursor);
+syncCommandCursor();
 
 terminal.addEventListener('click', event => {
   const command = event.target.dataset.run;

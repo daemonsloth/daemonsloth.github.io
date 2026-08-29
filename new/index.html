@@ -39,7 +39,10 @@
 
         <form class="command-form" id="commandForm">
           <label for="commandInput"><span class="prompt"></span><span class="path">:~$</span></label>
-          <input id="commandInput" autocomplete="off" aria-label="Enter a command" />
+          <span class="command-input-wrap">
+            <input id="commandInput" autocomplete="off" aria-label="Enter a command" />
+            <span class="command-cursor" aria-hidden="true"></span>
+          </span>
           <button type="submit" aria-label="Run command">↵</button>
         </form>
       </section>

@@ -38,7 +38,7 @@ const PROFILE = {
     brandMark: '$',
     eyebrow: 'Profile navigator',
     terminalPath: '~/public-profile',
-    commandPromptPlaceholder: "type 'help' for commands",
+    commandPromptPlaceholder: " type 'help' for help :P",
     availableMessage: 'up for interesting projects',
     sleepTitle: 'sid@workstation is sleeping',
     sleepSubtitle: 'click to restore session',
