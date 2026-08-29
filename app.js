@@ -433,6 +433,17 @@ function getHashCommand() {
   }
 }
 
+function trackPageView(key) {
+  const filename = pageFileMap[key];
+  if (!filename || typeof window.gtag !== 'function') return;
+
+  window.gtag('event', 'page_view', {
+    page_title: `${PROFILE.ui.siteTitle} / ${filename}`,
+    page_location: `${window.location.origin}${window.location.pathname}#${encodeURIComponent(filename)}`,
+    page_path: `/${filename}`
+  });
+}
+
 function resolveCommand(command) {
   const cleaned = command.trim().toLowerCase().replace(/^#/, '').replace(/^\.\//, '');
   const requestedFile = cleaned.replace(/^cat\s+/, '');
@@ -482,6 +493,7 @@ function render(command) {
   updateActiveNav(key);
   sidebar.classList.remove('open');
   terminal.scrollTop = 0;
+  trackPageView(key);
   typeOutput();
 }
 
