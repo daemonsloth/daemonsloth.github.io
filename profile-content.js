@@ -33,7 +33,7 @@ const PROFILE = {
   },
 
   ui: {
-    siteTitle: 'Sid',
+    siteTitle: 'sid@workstation',
     metaDescription: 'Public profile for Siddharth Maurya, systems engineer and researcher.',
     brandMark: '$',
     eyebrow: 'Profile navigator',
